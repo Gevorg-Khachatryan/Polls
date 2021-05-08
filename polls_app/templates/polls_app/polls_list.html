@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}
+{% load i18n  admin_list %}
+{% block branding %}
+    <h1>Polls</h1>
+{% endblock %}
+{% block content %}
+    <ul>
+        <div class="row">
+        {% for item in polls %}
+            <br>
+            <hr>
+            <div class="col-sm-4">
+                <a href="{% url 'poll-page' pk=item.id %}" style="all:unset;cursor: pointer">
+                    <div class="panel panel-primary news_item" data-poll-id="{{ item.id }}">
+                        <div class="panel-heading">{{ item.name }}</div>
+                        <div class="panel-footer">End Date - {{ item.end_date | date }}</div>
+                    </div>
+                </a>
+            </div>
+            <hr>
+        {% endfor %}
+    </ul>
+{% endblock %}
